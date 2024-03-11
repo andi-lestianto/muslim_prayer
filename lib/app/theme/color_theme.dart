@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class ColorTheme {
   static const Color primaryGreen = Color(0xFF014327);
   static const Color secondaryGreen = Color(0xFF01351E);
+  static const Color lightGreen = Color(0xFF33B97A);
   static const Color pureWhite = Color(0xFFFFFFFF);
   static const Color whiteGray = Color(0xFFF7F7F7);
   static const Color pureBlack = Color(0xFF000000);
