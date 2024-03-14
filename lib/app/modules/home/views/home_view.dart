@@ -55,12 +55,55 @@ class HomeView extends GetView<HomeController> {
                         size: Size(200, 100),
                       ),
                       Column(
-                        children: [Text('data')],
+                        children: [
+                          Text(
+                            'Karanganyar',
+                            style: FontTheme.semibold.copyWith(
+                              fontSize: 10.sp,
+                              color: ColorTheme.pureWhite,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 4.w,
+                          ),
+                          Text(
+                            '10:24',
+                            style: FontTheme.extrabold.copyWith(
+                                fontSize: 32.sp,
+                                color: ColorTheme.pureWhite,
+                                height: 1),
+                          ),
+                          SizedBox(
+                            height: 4.w,
+                          ),
+                          Text(
+                            '11 Maret 2024',
+                            style: FontTheme.semibold.copyWith(
+                              fontSize: 10.sp,
+                              color: ColorTheme.pureWhite,
+                            ),
+                          )
+                        ],
                       )
                     ],
                   ),
                 ),
               ),
+              SizedBox(
+                height: 8.w,
+              ),
+              Row(
+                children: [
+                  Row(
+                    children: [
+                      SvgPicture.asset(PrayPageIcon.icSubuhSvg),
+                      Column(
+                        children: [Text('Subuh')],
+                      )
+                    ],
+                  )
+                ],
+              )
             ],
           ),
         ),
