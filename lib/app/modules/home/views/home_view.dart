@@ -120,8 +120,6 @@ class MyPainter extends CustomPainter {
     Path path = Path()
       ..moveTo(size.width / 2, size.height)
       ..lineTo(size.width - 12, size.height)
-      // ..lineTo(0, 0)
-      // ..lineTo(size.width, size.height - 20)
       ..arcToPoint(
         Offset(size.width, size.height - 12),
         radius: Radius.circular(12),
