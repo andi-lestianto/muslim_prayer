@@ -1,11 +1,12 @@
 class PrayPageIcon {
-  static const icAsharSvg = 'assets/icon/praypage/ic-ashar.svg';
-  static const icDhuhurSvg = 'assets/icon/praypage/ic-dhuhur.svg';
+  static const icAsharPng = 'assets/icon/praypage/ic-ashar.png';
+  static const icIsyaPng = 'assets/icon/praypage/ic-isya.png';
+  static const icMagribPng = 'assets/icon/praypage/ic-magrib.png';
+  static const icSubuhPng = 'assets/icon/praypage/ic-subuh.png';
+  static const icDhuhurPng = 'assets/icon/praypage/ic-dhuhur.png';
+  static const icKabahPng = 'assets/icon/praypage/ic-kabah.png';
+
   static const icInfoSvg = 'assets/icon/praypage/ic-info.svg';
-  static const icIsyaSvg = 'assets/icon/praypage/ic-isya.svg';
-  static const icKabahSvg = 'assets/icon/praypage/ic-kabah.svg';
   static const icLocationSvg = 'assets/icon/praypage/ic-location.svg';
-  static const icMagribSvg = 'assets/icon/praypage/ic-magrib.svg';
   static const icNotificationSvg = 'assets/icon/praypage/ic-notification.svg';
-  static const icSubuhSvg = 'assets/icon/praypage/ic-subuh.svg';
 }

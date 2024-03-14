@@ -90,20 +90,278 @@ class HomeView extends GetView<HomeController> {
                 ),
               ),
               SizedBox(
-                height: 8.w,
+                height: 24.w,
               ),
-              Row(
-                children: [
-                  Row(
-                    children: [
-                      SvgPicture.asset(PrayPageIcon.icSubuhSvg),
-                      Column(
-                        children: [Text('Subuh')],
-                      )
-                    ],
-                  )
-                ],
-              )
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 32.w),
+                child: Row(
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(
+                          PrayPageIcon.icSubuhPng,
+                          height: 35.w,
+                        ),
+                        SizedBox(
+                          width: 4.w,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Subuh',
+                                style: FontTheme.semibold.copyWith(
+                                    fontSize: 10.sp,
+                                    color: ColorTheme.pureWhite)),
+                            Text('04:35',
+                                style: FontTheme.regular.copyWith(
+                                    fontSize: 8.sp,
+                                    color: ColorTheme.pureWhite)),
+                          ],
+                        )
+                      ],
+                    ),
+                    Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.all(4.w),
+                            decoration: BoxDecoration(
+                                color: ColorTheme.pureWhite,
+                                borderRadius: BorderRadius.circular(4.r)),
+                            child: SvgPicture.asset(
+                              PrayPageIcon.icLocationSvg,
+                              height: 19.w,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 4.w,
+                          ),
+                          Container(
+                            padding: EdgeInsets.all(4.w),
+                            decoration: BoxDecoration(
+                                color: ColorTheme.pureWhite,
+                                borderRadius: BorderRadius.circular(4.r)),
+                            child: Image.asset(
+                              PrayPageIcon.icKabahPng,
+                              height: 19.w,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Image.asset(
+                          PrayPageIcon.icDhuhurPng,
+                          height: 35.w,
+                        ),
+                        SizedBox(
+                          width: 4.w,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text('Dzuhur',
+                                style: FontTheme.semibold.copyWith(
+                                    fontSize: 10.sp,
+                                    color: ColorTheme.pureWhite)),
+                            Text('11:45',
+                                style: FontTheme.regular.copyWith(
+                                    fontSize: 8.sp,
+                                    color: ColorTheme.pureWhite)),
+                          ],
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 12.w,
+              ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
+                  decoration: BoxDecoration(
+                      color: ColorTheme.whiteGray,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(24.r),
+                          topRight: Radius.circular(24.r))),
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(vertical: 12.w),
+                      child: Column(
+                        children: [
+                          ...List.generate(
+                              5,
+                              (index) => Container(
+                                    child: IntrinsicHeight(
+                                      child: Row(
+                                        children: [
+                                          Column(
+                                            children: [
+                                              Expanded(
+                                                  child: index == 0 ||
+                                                          index == 5
+                                                      ? SizedBox()
+                                                      : VerticalDivider(
+                                                          color: ColorTheme
+                                                              .lightGray
+                                                              .withOpacity(0.1),
+                                                          width: 2.w,
+                                                          thickness: 2.w,
+                                                        )),
+                                              Container(
+                                                margin: EdgeInsets.symmetric(
+                                                    vertical: 4.w),
+                                                child: index == 0
+                                                    ? ClipOval(
+                                                        child: Container(
+                                                          padding:
+                                                              EdgeInsets.all(
+                                                                  6.w),
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: ColorTheme
+                                                                .pureYellow,
+                                                          ),
+                                                          child: ClipOval(
+                                                            child: Container(
+                                                              height: 6.w,
+                                                              width: 6.w,
+                                                              decoration: BoxDecoration(
+                                                                  color: ColorTheme
+                                                                      .pureWhite),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      )
+                                                    : Padding(
+                                                        padding:
+                                                            EdgeInsets.all(2.w),
+                                                        child: ClipOval(
+                                                          child: Container(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    4.w),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: ColorTheme
+                                                                  .pureYellow
+                                                                  .withOpacity(
+                                                                      0.25),
+                                                            ),
+                                                            child: ClipOval(
+                                                              child: Container(
+                                                                height: 6.w,
+                                                                width: 6.w,
+                                                                decoration: BoxDecoration(
+                                                                    color: ColorTheme
+                                                                        .pureYellow),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                              ),
+                                              Expanded(
+                                                child: VerticalDivider(
+                                                  color: ColorTheme.lightGray
+                                                      .withOpacity(0.1),
+                                                  width: 2.w,
+                                                  thickness: 2.w,
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            width: 24.w,
+                                          ),
+                                          Expanded(
+                                            child: Container(
+                                              margin: EdgeInsets.symmetric(
+                                                  vertical: 8.w),
+                                              padding: EdgeInsets.all(12.w),
+                                              decoration: BoxDecoration(
+                                                  color: ColorTheme.pureWhite,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.r)),
+                                              child: Row(
+                                                children: [
+                                                  Container(
+                                                      decoration: BoxDecoration(
+                                                          color: ColorTheme
+                                                              .whiteGray,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.r)),
+                                                      padding:
+                                                          EdgeInsets.all(4.w),
+                                                      child: Image.asset(
+                                                        PrayPageIcon.icSubuhPng,
+                                                        height: 35.w,
+                                                        width: 35.w,
+                                                      )),
+                                                  SizedBox(
+                                                    width: 8.w,
+                                                  ),
+                                                  Expanded(
+                                                    child: Column(
+                                                      crossAxisAlignment:
+                                                          CrossAxisAlignment
+                                                              .start,
+                                                      children: [
+                                                        Text(
+                                                          'Subuh',
+                                                          style: FontTheme
+                                                              .semibold
+                                                              .copyWith(
+                                                                  fontSize:
+                                                                      14.sp,
+                                                                  color: ColorTheme
+                                                                      .pureBlack),
+                                                        ),
+                                                        Text(
+                                                          '04:35',
+                                                          style: FontTheme
+                                                              .regular
+                                                              .copyWith(
+                                                                  fontSize:
+                                                                      10.sp,
+                                                                  color: ColorTheme
+                                                                      .pureBlack),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  SvgPicture.asset(
+                                                    PrayPageIcon
+                                                        .icNotificationSvg,
+                                                    height: 24.w,
+                                                    colorFilter: index == 0
+                                                        ? ColorFilter.mode(
+                                                            ColorTheme
+                                                                .pureYellow,
+                                                            BlendMode.srcIn)
+                                                        : null,
+                                                  )
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ))
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
