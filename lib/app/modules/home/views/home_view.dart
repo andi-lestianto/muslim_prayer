@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:muslim_prayer/app/const/prayicon/praypage_icon.dart';
+import 'package:muslim_prayer/app/const/praypageicon/praypage_icon.dart';
+import 'package:muslim_prayer/app/routes/app_pages.dart';
 import 'package:muslim_prayer/app/theme/color_theme.dart';
 import 'package:muslim_prayer/app/theme/font_theme.dart';
 import 'package:semicircle_indicator/semicircle_indicator.dart';
@@ -40,18 +42,20 @@ class HomeView extends GetView<HomeController> {
                 height: 24.w,
               ),
               SemicircularIndicator(
-                progress: 0.2,
+                radius: 120.w,
+                strokeWidth: 20,
+                progress: 0.7,
                 color: ColorTheme.pureYellow,
                 bottomPadding: 0,
                 backgroundColor: ColorTheme.secondaryGreen,
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 32),
+                  padding: EdgeInsets.only(top: 28.w),
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
                       CustomPaint(
                         painter: MyPainter(),
-                        size: const Size(200, 100),
+                        size: Size(200.w, 100.w),
                       ),
                       Column(
                         children: [
@@ -136,14 +140,19 @@ class HomeView extends GetView<HomeController> {
                           SizedBox(
                             width: 4.w,
                           ),
-                          Container(
-                            padding: EdgeInsets.all(4.w),
-                            decoration: BoxDecoration(
-                                color: ColorTheme.pureWhite,
-                                borderRadius: BorderRadius.circular(4.r)),
-                            child: Image.asset(
-                              PrayPageIcon.icKabahPng,
-                              height: 19.w,
+                          InkWell(
+                            onTap: () {
+                              Get.toNamed(Routes.QIBLAHDIRECTION);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(4.w),
+                              decoration: BoxDecoration(
+                                  color: ColorTheme.pureWhite,
+                                  borderRadius: BorderRadius.circular(4.r)),
+                              child: Image.asset(
+                                PrayPageIcon.icKabahPng,
+                                height: 19.w,
+                              ),
                             ),
                           )
                         ],
