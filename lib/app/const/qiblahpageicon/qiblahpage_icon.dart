@@ -5,4 +5,5 @@ class QiblahPageIcon {
       'assets/icon/qiblahpage/ic-arrow-circle-left.svg';
 
   static const icLightBulbPng = 'assets/icon/qiblahpage/ic-lightbulb.png';
+  static const icKabahwhitePng = 'assets/icon/qiblahpage/ic-kabahwhite.png';
 }

@@ -27,14 +27,19 @@ class QiblahdirectionView extends GetView<QiblahdirectionController> {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12.w),
+                  padding: EdgeInsets.symmetric(horizontal: 24.w),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SvgPicture.asset(
-                        QiblahPageIcon.icArrowCircleSvg,
-                        width: 24.w,
-                        height: 24.w,
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: SvgPicture.asset(
+                          QiblahPageIcon.icArrowCircleSvg,
+                          width: 24.w,
+                          height: 24.w,
+                        ),
                       ),
                       Text(
                         'Qiblah Direction',
@@ -163,30 +168,35 @@ class QiblahdirectionView extends GetView<QiblahdirectionController> {
                 Expanded(
                   child: Container(
                       width: 1.sw,
-                      padding: EdgeInsets.symmetric(horizontal: 24.w),
+                      padding: EdgeInsets.all(24.w),
                       decoration: BoxDecoration(
                           color: ColorTheme.whiteGray,
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(24.r),
                               topRight: Radius.circular(24.r))),
-                      child: Center(
-                        child: FutureBuilder(
-                          future: _.deviceSupport,
-                          builder: (_, AsyncSnapshot<bool?> snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting)
-                              return CircularProgressIndicator();
-                            if (snapshot.hasError)
-                              return Center(
-                                child:
-                                    Text("Error: ${snapshot.error.toString()}"),
-                              );
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: ColorTheme.pureWhite,
+                            borderRadius: BorderRadius.circular(16.r)),
+                        child: Center(
+                          child: FutureBuilder(
+                            future: _.deviceSupport,
+                            builder: (_, AsyncSnapshot<bool?> snapshot) {
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting)
+                                return CircularProgressIndicator();
+                              if (snapshot.hasError)
+                                return Center(
+                                  child: Text(
+                                      "Error: ${snapshot.error.toString()}"),
+                                );
 
-                            if (snapshot.data!)
-                              return QiblahCompass();
-                            else
-                              return Text('Maps');
-                          },
+                              if (snapshot.data!)
+                                return QiblahCompass();
+                              else
+                                return Text('Maps');
+                            },
+                          ),
                         ),
                       )),
                 ),

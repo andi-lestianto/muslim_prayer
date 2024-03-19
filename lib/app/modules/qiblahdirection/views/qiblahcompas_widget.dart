@@ -2,7 +2,9 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:math' show pi;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -37,9 +39,8 @@ class _QiblahCompassState extends State<QiblahCompass> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Align(
       alignment: Alignment.center,
-      padding: const EdgeInsets.all(8.0),
       child: StreamBuilder(
         stream: stream,
         builder: (context, AsyncSnapshot<LocationStatus> snapshot) {
@@ -97,7 +98,7 @@ class QiblahCompassWidget extends StatelessWidget {
   final _needleSvg = SvgPicture.asset(
     QiblahPageIcon.icArrowqiblahSvg,
     fit: BoxFit.contain,
-    height: 50.w,
+    height: 200.w,
     alignment: Alignment.center,
   );
 
@@ -210,7 +211,20 @@ class QiblahCompassWidget extends StatelessWidget {
             Transform.rotate(
               angle: (qiblahDirection.qiblah * (pi / 180) * -1),
               alignment: Alignment.center,
-              child: _needleSvg,
+              child: Stack(
+                children: [
+                  _needleSvg,
+                  Positioned.fill(
+                      child: Center(
+                    child: Image.asset(
+                      QiblahPageIcon.icKabahwhitePng,
+                      height: 26.w,
+                      width: 26.w,
+                      fit: BoxFit.cover,
+                    ),
+                  ))
+                ],
+              ),
             ),
             Positioned(
               bottom: 8,
