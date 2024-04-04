@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:get/get.dart';
-import 'package:muslim_prayer/app/const/praypageicon/praypage_icon.dart';
 import 'package:muslim_prayer/app/const/qiblahpageicon/qiblahpage_icon.dart';
 import 'package:muslim_prayer/app/modules/home/views/home_view.dart';
 import 'package:muslim_prayer/app/modules/qiblahdirection/views/qiblahcompas_widget.dart';
@@ -15,7 +13,7 @@ import 'package:semicircle_indicator/semicircle_indicator.dart';
 import '../controllers/qiblahdirection_controller.dart';
 
 class QiblahdirectionView extends GetView<QiblahdirectionController> {
-  const QiblahdirectionView({Key? key}) : super(key: key);
+  const QiblahdirectionView({super.key});
   @override
   Widget build(BuildContext context) {
     return GetBuilder<QiblahdirectionController>(
@@ -183,18 +181,21 @@ class QiblahdirectionView extends GetView<QiblahdirectionController> {
                             future: _.deviceSupport,
                             builder: (_, AsyncSnapshot<bool?> snapshot) {
                               if (snapshot.connectionState ==
-                                  ConnectionState.waiting)
-                                return CircularProgressIndicator();
-                              if (snapshot.hasError)
+                                  ConnectionState.waiting) {
+                                return const CircularProgressIndicator();
+                              }
+                              if (snapshot.hasError) {
                                 return Center(
                                   child: Text(
                                       "Error: ${snapshot.error.toString()}"),
                                 );
+                              }
 
-                              if (snapshot.data!)
-                                return QiblahCompass();
-                              else
-                                return Text('Maps');
+                              if (snapshot.data!) {
+                                return const QiblahCompass();
+                              } else {
+                                return const Text('Maps');
+                              }
                             },
                           ),
                         ),

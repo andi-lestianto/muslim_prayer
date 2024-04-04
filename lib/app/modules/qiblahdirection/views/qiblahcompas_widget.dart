@@ -2,9 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:math' show pi;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_qiblah/flutter_qiblah.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,7 +12,10 @@ import 'package:muslim_prayer/app/theme/color_theme.dart';
 import 'package:muslim_prayer/app/theme/font_theme.dart';
 
 class QiblahCompass extends StatefulWidget {
+  const QiblahCompass({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _QiblahCompassState createState() => _QiblahCompassState();
 }
 
@@ -44,8 +45,9 @@ class _QiblahCompassState extends State<QiblahCompass> {
       child: StreamBuilder(
         stream: stream,
         builder: (context, AsyncSnapshot<LocationStatus> snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting)
-            return CircularProgressIndicator();
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          }
           if (snapshot.data!.enabled == true) {
             switch (snapshot.data!.status) {
               case LocationPermission.always:
@@ -88,13 +90,13 @@ class _QiblahCompassState extends State<QiblahCompass> {
       await FlutterQiblah.requestPermissions();
       final s = await FlutterQiblah.checkLocationStatus();
       _locationStreamController.sink.add(s);
-    } else
+    } else {
       _locationStreamController.sink.add(locationStatus);
+    }
   }
 }
 
 class QiblahCompassWidget extends StatelessWidget {
-  final _compassSvg = SvgPicture.asset('assets/compass.svg');
   final _needleSvg = SvgPicture.asset(
     QiblahPageIcon.icArrowqiblahSvg,
     fit: BoxFit.contain,
@@ -102,22 +104,25 @@ class QiblahCompassWidget extends StatelessWidget {
     alignment: Alignment.center,
   );
 
+  QiblahCompassWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: FlutterQiblah.qiblahStream,
       builder: (_, AsyncSnapshot<QiblahDirection> snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting)
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircularProgressIndicator(),
+              const CircularProgressIndicator(),
               SizedBox(
                 height: 12.w,
               ),
-              Text('Getting your location...'),
+              const Text('Getting your location...'),
             ],
           );
+        }
 
         final qiblahDirection = snapshot.data!;
         log(qiblahDirection.qiblah.toString());
@@ -130,13 +135,14 @@ class QiblahCompassWidget extends StatelessWidget {
               child: ClipOval(
                 child: Container(
                   padding: EdgeInsets.all(16.w),
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: ColorTheme.primaryGreen,
                   ),
                   child: ClipOval(
                     child: Container(
                       // padding: EdgeInsets.all(56.w),
-                      decoration: BoxDecoration(color: ColorTheme.lightGreen),
+                      decoration:
+                          const BoxDecoration(color: ColorTheme.lightGreen),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -171,7 +177,7 @@ class QiblahCompassWidget extends StatelessWidget {
                                 child: Container(
                                   width: 125.w,
                                   height: 125.w,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                       color: ColorTheme.pureWhite),
                                 ),
                               ),
@@ -241,38 +247,36 @@ class LocationErrorWidget extends StatelessWidget {
   final String? error;
   final Function? callback;
 
-  const LocationErrorWidget({Key? key, this.error, this.callback})
-      : super(key: key);
+  const LocationErrorWidget({super.key, this.error, this.callback});
 
   @override
   Widget build(BuildContext context) {
-    final box = SizedBox(height: 32);
-    final errorColor = Color(0xffb00020);
+    const box = SizedBox(height: 32);
+    const errorColor = Color(0xffb00020);
 
-    return Container(
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Icon(
-              Icons.location_off,
-              size: 150,
-              color: errorColor,
-            ),
-            box,
-            Text(
-              error!,
-              style: TextStyle(color: errorColor, fontWeight: FontWeight.bold),
-            ),
-            box,
-            ElevatedButton(
-              child: Text("Retry"),
-              onPressed: () {
-                if (callback != null) callback!();
-              },
-            )
-          ],
-        ),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          const Icon(
+            Icons.location_off,
+            size: 150,
+            color: errorColor,
+          ),
+          box,
+          Text(
+            error!,
+            style:
+                const TextStyle(color: errorColor, fontWeight: FontWeight.bold),
+          ),
+          box,
+          ElevatedButton(
+            child: const Text("Retry"),
+            onPressed: () {
+              if (callback != null) callback!();
+            },
+          )
+        ],
       ),
     );
   }

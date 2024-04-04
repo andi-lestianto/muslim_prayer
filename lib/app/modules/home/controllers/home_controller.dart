@@ -1,17 +1,14 @@
 // ignore_for_file: unnecessary_overrides
 
 import 'dart:async';
-import 'dart:convert';
 import 'dart:developer';
 
-import 'package:flutter/services.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:muslim_prayer/app/model/api_response.dart';
 import 'package:muslim_prayer/app/model/prayscheduleresponse_model.dart';
 import 'package:muslim_prayer/app/modules/home/services/homeservices.dart';
-import 'package:muslim_prayer/app/services/network/api_services.dart';
 import 'package:muslim_prayer/app/services/sharedpref/sharedpref_services.dart';
 import 'package:muslim_prayer/app/utils/datetime_utils.dart';
 
@@ -43,7 +40,7 @@ class HomeController extends GetxController {
   }
 
   getCityName({required double lat, required double long}) async {
-    print('getCityByName');
+    log('getCityByName');
     List<Placemark> placemarks = await placemarkFromCoordinates(
       lat,
       long,
@@ -107,7 +104,7 @@ class HomeController extends GetxController {
   void onInit() {
     super.onInit();
     getSavedLatLong();
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
       getCurrentTime();
     });
   }
